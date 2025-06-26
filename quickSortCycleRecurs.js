@@ -78,16 +78,11 @@ console.log('-------------------замер производительности-
 
 let COUNT = 1_000_000;
 let start = 0;
-let end = 0;
 
 start = Date.now();
-for (i=1; i<=COUNT; i++) {
-  quickSort(arr);
-};
+for (i=1; i<=COUNT; i++) quickSort(arr);
 console.log('quickSort time (MS) = ', Date.now() - start);
 
 start = Date.now();
-for (i=1; i<=COUNT; i++) {
-  quickSortCycle(arr);
-};
+for (i=1; i<=COUNT; i++) quickSortCycle(arr);
 console.log('quickSortCycle time (MS) = ', Date.now() - start);
