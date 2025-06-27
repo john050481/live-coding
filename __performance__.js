@@ -1,3 +1,6 @@
+/**
+  Выполнять для каждой функции ОТДЕЛЬНО!!! Не надо запускать друг за другом для нескольких функций.
+*/
 export function performance(title, func, count = 1_000_000, subtitle) {
   const start = Date.now();
   for (let i=1; i<=count; i++) func();
