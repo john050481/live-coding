@@ -30,7 +30,6 @@ function sumToProgression(n) {
 console.log( sumToProgression(100) ); // 5050
 
 console.log('-------------------замер производительности--------------------------------');
-
 const COUNT = 10_000_000;
 const N = 20;
 

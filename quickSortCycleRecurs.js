@@ -77,7 +77,6 @@ console.log('quickSortCycle: result = ', quickSortCycle(arr))
 console.log('quickSortCycle: count = ', count)
 
 console.log('-------------------замер производительности--------------------------------');
-
 const COUNT = 1_000_000;
 
 performance('quickSort', () => quickSort(arr), COUNT);
