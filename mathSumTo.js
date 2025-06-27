@@ -3,7 +3,7 @@ import { makeCachingForOneArg } from './cacheDecoratorForOneArg.js';
 
 // sumTo(n) = 1 + 2 + ... + n
 // sumTo(4) = 4 + 3 + 2 + 1 = 10
-// sumTo(n) = n + sumTo(n-1) for n > 1.
+// sumTo(n) = n + sumTo(n-1) for n > 1
 
 //------------------------- Recurs
 function sumToRecurs(n) {
@@ -23,7 +23,7 @@ function sumToCycle(n) {
 };
 console.log(sumToCycle(100)); // 5050
 
-//------------------------ Arithmetic (difference) progression: sumTo(n) = n*(n+1)/2:
+//------------------------ Arithmetic (difference) progression: sumTo(n) = n*(n+1)/2
 function sumToProgression(n) {
   return n * (n + 1) / 2;
 };
