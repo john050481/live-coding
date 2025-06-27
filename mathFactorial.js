@@ -1,3 +1,6 @@
+import { performance } from './__performance__.js';
+import { makeCachingForOneArg } from './cacheDecoratorForOneArg.js';
+
 // n! = n * (n - 1) * (n - 2) * ...*1
 // n! = n * (n-1)! Например: 3! = 3*2! = 3*2*1! = 6
 
@@ -24,15 +27,15 @@ console.log( factorialCycle(5) ); // 120
 console.log( factorialCycle(10) ); // 3628800
 
 console.log('-------------------замер производительности--------------------------------');
+const COUNT = 10_000_000;
+const N = 10;
 
-let COUNT = 10_000_000;
-let start = 0;
-let N = 10;
+performance('factorial', () => factorial(N), COUNT);
 
-start = Date.now();
-for (i=1; i<=COUNT; i++) factorial(N);
-console.log('factorial time (MS) = ', Date.now() - start);
+const cachedFactorial = makeCachingForOneArg(factorial);
+performance('factorial with cache', () => cachedFactorial(N), COUNT);
 
-start = Date.now();
-for (i=1; i<=COUNT; i++) factorialCycle(N);
-console.log('factorialCycle time (MS) = ', Date.now() - start);
+performance('factorialCycle', () => factorialCycle(N), COUNT);
+
+const cachedFactorialCycle = makeCachingForOneArg(factorialCycle);
+performance('factorialCycle with cache', () => cachedFactorialCycle(N), COUNT);

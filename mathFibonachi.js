@@ -1,3 +1,6 @@
+import { performance } from './__performance__.js';
+import { makeCachingForOneArg } from './cacheDecoratorForOneArg.js';
+
 // Фибоначчи определяется формулой Fn = Fn-1 + Fn-2
 // 1, 1, 2, 3, 5, 8, 13
 function fibRecurs(n) {
@@ -26,35 +29,15 @@ console.log( fibCycle(7) ); // 13
 console.log( fibCycle(40) ); // 102334155
 
 console.log('-------------------замер производительности--------------------------------');
-function makeFibCaching(f) {
-  const cache = {};
+const COUNT = 10_000_000;
+const N = 10;
 
-  return function funcWithCache(x) {
-    if (!(x in cache)) {
-      cache[x] = f.call(this, x);
-    }
-    return cache[x];
-  };
-};
+performance('fibRecurs', () => fibRecurs(N), COUNT);
 
-let COUNT = 10_000_000;
-let start = 0;
-let N = 10;
+const fibRecursWithCache = makeCachingForOneArg(fibRecurs);
+performance('fibRecurs with cache', () => fibRecursWithCache(N), COUNT);
 
-start = Date.now();
-for (i=1; i<=COUNT; i++) fibRecurs(N);
-console.log('fibRecurs time (MS) = ', Date.now() - start);
+performance('fibCycle', () => fibCycle(N), COUNT);
 
-start = Date.now();
-let fibRecursWithCache = makeFibCaching(fibRecurs);
-for (i=1; i<=COUNT; i++) fibRecursWithCache(N);
-console.log('fibRecurs with cache time (MS) = ', Date.now() - start);
-
-start = Date.now();
-for (i=1; i<=COUNT; i++) fibCycle(N);
-console.log('fibCycle time (MS) = ', Date.now() - start);
-
-start = Date.now();
-let fibCycleWithCache = makeFibCaching(fibCycle);
-for (i=1; i<=COUNT; i++) fibCycleWithCache(N);
-console.log('fibCycle with cache time (MS) = ', Date.now() - start);
+const fibCycleWithCache = makeCachingForOneArg(fibCycle);
+performance('fibCycle with cache', () => fibCycleWithCache(N), COUNT);
