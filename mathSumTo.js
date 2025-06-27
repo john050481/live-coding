@@ -36,11 +36,11 @@ const N = 20;
 performance('sumToRecurs', () => sumToRecurs(N), COUNT);
 
 const cachedSumToRecurs = makeCachingForOneArg(sumToRecurs);
-performance('sumToRecurs with cache', () => cachedSumToRecurs(N), COUNT);
+performance('sumToRecurs', () => cachedSumToRecurs(N), COUNT, 'with cache');
 
 performance('sumToCycle', () => sumToCycle(N), COUNT);
 
 const cachedSumToCycle = makeCachingForOneArg(sumToCycle);
-performance('sumToCycle with cache', () => cachedSumToCycle(N), COUNT);
+performance('sumToCycle', () => cachedSumToCycle(N), COUNT, 'with cache');
 
 performance('sumToProgression', () => sumToProgression(N), COUNT);

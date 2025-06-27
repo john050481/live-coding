@@ -35,9 +35,9 @@ const N = 10;
 performance('fibRecurs', () => fibRecurs(N), COUNT);
 
 const fibRecursWithCache = makeCachingForOneArg(fibRecurs);
-performance('fibRecurs with cache', () => fibRecursWithCache(N), COUNT);
+performance('fibRecurs', () => fibRecursWithCache(N), COUNT, 'with cache');
 
 performance('fibCycle', () => fibCycle(N), COUNT);
 
 const fibCycleWithCache = makeCachingForOneArg(fibCycle);
-performance('fibCycle with cache', () => fibCycleWithCache(N), COUNT);
+performance('fibCycle', () => fibCycleWithCache(N), COUNT, 'with cache');
