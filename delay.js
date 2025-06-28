@@ -30,8 +30,8 @@ function sum(a, b) {
 }
 
 delayMacro(sum, 1000)(1, 2);
-// delayMicro(sum, 1000)(1, 2).then(res => console.log('RES = ', res));
-// console.log('RES = ', delaySync(sum, 1000)(1, 2));
+// delayMicro(sum, 1000)(1, 2).then(res => console.log('RES delayMicro = ', res));
+// console.log('RES delaySync = ', delaySync(sum, 1000)(1, 2));
 
 const objA = {
   a: 1,
@@ -40,5 +40,5 @@ const objA = {
   delayMicro: delayMicro(sum, 1500),
 };
 objA.delayMacro(3, 4);
-// objA.delayMicro(3, 4).then(res => console.log('RES = ', res));
-// console.log('RES = ', objA.delaySync(3, 4));
+// objA.delayMicro(3, 4).then(res => console.log('RES objA.delayMicro = ', res));
+// console.log('RES objA.delaySync = ', objA.delaySync(3, 4));
