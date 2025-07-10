@@ -1,6 +1,6 @@
 function isPalindromeSimple(str) {
   const reversedStr = str.split('').reverse().join('');
-  return str === reversedStr;
+  return str.toLowerCase() === reversedStr.toLowerCase();
 };
 
 // --------------
